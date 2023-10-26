@@ -5,7 +5,7 @@ from telegram.ext import Updater, CommandHandler
 bot_token = "6693782514:AAGheL0DF6SNZXQGsks_2I80vlLvz9StyEA"
 
 # Замените <YOUR_CHAT_ID> на ID вашего чата
-chat_id = "-1001988273555"
+chat_id = "373136286"
 
 bot = telegram.Bot(token=bot_token)
 bot.send_message(chat_id=chat_id, text="Тесты завершились неудачей.")
