@@ -1,0 +1,43 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Получение кода
+      uses: actions/checkout@v2
+
+    - name: Настройка Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8  # Укажите версию Python, которая вам нужна
+
+    - name: Установка зависимостей
+      run: pip install -r requirements.txt  # Измените это, если у вас есть файл requirements.txt
+
+    - name: Запуск тестов
+      run: python -m unittest discover tests
+
+        - name: Уведомление о сбое
+  if: failure()  # Запускать этот шаг только в случае сбоя предыдущего шага (тестов)
+  run: |
+    echo "Тесты завершились неудачей. Отправка уведомления..."
+    pip install python-telegram-bot
+    python - <<EOF
+import telegram
+from telegram.ext import Updater, CommandHandler
+
+# Замените <YOUR_BOT_TOKEN> на токен вашего бота
+bot_token = "6693782514:AAGheL0DF6SNZXQGsks_2I80vlLvz9StyEA"
+
+# Замените <YOUR_CHAT_ID> на ID вашего чата
+chat_id = "730829255"
+
+bot = telegram.Bot(token=bot_token)
+bot.send_message(chat_id=chat_id, text="Тесты завершились неудачей.")
+EOF
