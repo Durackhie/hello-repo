@@ -18,9 +18,6 @@ jobs:
       with:
         python-version: 3.8
 
-    - name: Установка зависимостей
-      run: pip install -r requirements.txt  # Измените это, если у вас есть файл requirements.txt
-
     - name: Запуск тестов
       run: python -m unittest discover tests
 
