@@ -8,4 +8,4 @@ bot_token = "6693782514:AAGheL0DF6SNZXQGsks_2I80vlLvz9StyEA"
 chat_id = "-1001988273555"
 
 bot = telegram.Bot(token=bot_token)
-bot.send_message(chat_id=chat_id, text="Тесты завершились неудачей.")
+await bot.send_message(chat_id=chat_id, text="Тесты завершились неудачей.")
