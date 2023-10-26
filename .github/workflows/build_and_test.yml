@@ -29,8 +29,9 @@ jobs:
     echo "Тесты завершились неудачей. Отправка уведомления..."
     pip install python-telegram-bot
     python - <<EOF
-    import telegram
-    from telegram.ext import Updater, CommandHandler
+
+import telegram
+from telegram.ext import Updater, CommandHandler
 
 
 bot_token = "6693782514:AAGheL0DF6SNZXQGsks_2I80vlLvz9StyEA"
