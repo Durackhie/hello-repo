@@ -18,8 +18,11 @@ jobs:
       with:
         python-version: 3.8
 
-    - name: Запуск тестов
-      run: python -m unittest discover tests
+    - name: Run Unit Tests
+      run: |
+        echo "Running tests..."
+        cd my_python_project  # Перейти в директорию с проектом
+        python -m unittest discover tests
 
     - name: Уведомление о сбое
       if: failure()  # Запускать этот шаг только в случае сбоя предыдущего шага (тестов)
