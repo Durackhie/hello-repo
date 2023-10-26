@@ -1,11 +1,12 @@
 import os
 from telegram import Bot
+import asyncio
 
 # Токен вашего бота, полученный от BotFather
-bot_token = "6693782514:AAGheL0DF6SNZXQGsks_2I80vlLvz9StyEA"
+bot_token = "YOUR_BOT_TOKEN"
 
 # Айди чата, куда вы хотите отправить уведомления
-chat_id = "-1001988273555"
+chat_id = "YOUR_CHAT_ID"
 
 # Инициализация бота
 bot = Bot(token=bot_token)
@@ -21,5 +22,5 @@ if __name__ == "__main__":
 
     if error_occurred:
         error_message = "Произошла ошибка с кодом 1"
-        # Отправка уведомления о ошибке
-        send_telegram_message(error_message)
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(send_telegram_message(error_message))
