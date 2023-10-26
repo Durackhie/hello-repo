@@ -3,10 +3,10 @@ from telegram import Bot
 import asyncio
 
 # Токен вашего бота, полученный от BotFather
-bot_token = "YOUR_BOT_TOKEN"
+bot_token = "6693782514:AAGheL0DF6SNZXQGsks_2I80vlLvz9StyEA"
 
 # Айди чата, куда вы хотите отправить уведомления
-chat_id = "YOUR_CHAT_ID"
+chat_id = "-1001988273555"
 
 # Инициализация бота
 bot = Bot(token=bot_token)
