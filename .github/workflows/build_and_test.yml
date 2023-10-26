@@ -29,4 +29,4 @@ jobs:
       run: |
         echo "Тесты завершились неудачей. Отправка уведомления..."
         pip install python-telegram-bot
-        python notify.py  # Это вызывает ваш скрипт notify.py
+        python my_python_project/notify.py  # Это вызывает ваш скрипт notify.py
