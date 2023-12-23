@@ -21,5 +21,5 @@ jobs:
       run: pip install pymysql
 
     - name: Run tests
-      run: python -m unittest discover -s hello-repo/my_pythonproject -p '*test.py'
+      run: python -m unittest discover -s hello-repo/mypythonproject -p '*test.py'
 
