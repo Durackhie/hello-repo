@@ -10,29 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
 
-      - name: Install dependencies
-        run: |
-          pip install coverage
-          pip install pymysql
+    - name: Install dependencies
+      run: pip install coverage
 
-      - name: Run tests with coverage
-        run: |
-          coverage run -m unittest discover -s mypythonproject -p '*test.py'
+    - name: Run tests
+      run: python -m coverage run -m unittest
 
-      - name: Generate HTML coverage report
-        run: |
-          coverage html --omit=".venv/*"
-          mv htmlcov coverage-report  # Переименовываем папку для артефактов
-
-      - name: Upload coverage report as artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage-report
-          path: coverage-report
+   -  name: data coverage report
+      run: python -m coverage report
