@@ -18,5 +18,9 @@ jobs:
       with:
         python-version: '3.9'  
 
+    - name: install modules
+      run: |
+        pip install pymysql 
+
     - name: Run Python script
       run: python3 mypythonproject/main.py  
