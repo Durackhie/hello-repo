@@ -18,10 +18,7 @@ jobs:
         python-version: '3.9'
 
     - name: Install dependencies
-      run: pip install coverage
+      run: pip install pymysql
 
     - name: Run tests
-      run: python -m coverage run -m unittest
-
-   -  name: data coverage report
-      run: python -m coverage report
+      run: python -m unittest discover -s mypythonproject -p '*test.py' 
