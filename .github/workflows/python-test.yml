@@ -1,24 +1,22 @@
-name: Python Tests
+name: Run Python script with MySQL in GitHub Actions
 
 on:
   push:
     branches:
-      - main
+      - main  
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest  # Выбираем операционную систему, например, ubuntu
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2  
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9'
+        python-version: '3.9'  
 
-    - name: Install dependencies
-      run: pip install pymysql
-
-    - name: Run tests
-      run: python3 -m unittest discover -s mypythonproject -p '*main.py' 
+    - name: Run Python script
+      run: python main.py  
