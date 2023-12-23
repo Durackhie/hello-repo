@@ -18,7 +18,9 @@ jobs:
           python-version: '3.9'
 
       - name: Install dependencies
-        run: pip install coverage
+        run: |
+          pip install coverage
+          pip install pymysql
 
       - name: Run tests with coverage
         run: |
@@ -26,7 +28,8 @@ jobs:
 
       - name: Generate HTML coverage report
         run: |
-          coverage html -d coverage-report --omit=".venv/*"
+          coverage html --omit=".venv/*"
+          mv htmlcov coverage-report  # Переименовываем папку для артефактов
 
       - name: Upload coverage report as artifact
         uses: actions/upload-artifact@v2
