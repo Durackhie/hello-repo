@@ -1,4 +1,4 @@
-from mypythonproject.script 
+from mypythonproject
 import unittest
 
 class TestScriptFunctions(unittest.TestCase):
