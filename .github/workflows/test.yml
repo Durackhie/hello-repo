@@ -14,11 +14,13 @@ jobs:
       with:
         python-version: '3.9'
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+    - name: Install dependencies and run tests
+      run: |
+        pip install coverage
+        python3 -m unittest discover -s . -p '*test*.py' 
 
     - name: Run tests
-      run: python -m unittest discover -s . -p '*test*.py'
+      run: python3 -m unittest discover -s . -p '*test*.py'
 
     - name: Generate coverage report
       run: |
