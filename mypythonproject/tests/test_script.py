@@ -1,5 +1,5 @@
+from mypythonproject.script import add, subtract
 import unittest
-from script import add, subtract
 
 class TestScriptFunctions(unittest.TestCase):
     def test_add(self):
@@ -14,4 +14,3 @@ class TestScriptFunctions(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
