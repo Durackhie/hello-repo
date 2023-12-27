@@ -1,35 +1,25 @@
-import unittest
-from unittest.mock import patch
-from mysql_class import MySQL
-from main import create_table_query, add_item_query, delete_item_query, delete_table_query
+name: Run Tests
 
-class TestMySQLQueries(unittest.TestCase):
-    def setUp(self):
-        self.mysql = MySQL(host='127.0.0.1', user='Durackhie', password='Valera1124', database='DurackhieBase')
+on: [push, pull_request]
 
-    def tearDown(self):
-        del self.mysql
+jobs:
+  test:
+    runs-on: ubuntu-latest
 
-    def test_create_table_query(self):
-        with patch.object(self.mysql, 'execute_query') as mock_execute_query:
-            self.mysql.execute_query(create_table_query)
-            mock_execute_query.assert_called_once_with(create_table_query)
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-    def test_add_item_query(self):
-        with patch.object(self.mysql, 'execute_query') as mock_execute_query:
-            self.mysql.execute_query(add_item_query)
-            mock_execute_query.assert_called_once_with(add_item_query)
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
 
-    def test_delete_item_query(self):
-        with patch.object(self.mysql, 'execute_query') as mock_execute_query:
-            self.mysql.execute_query(delete_item_query)
-            mock_execute_query.assert_called_once_with(delete_item_query)
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt  # Замените requirements.txt на имя вашего файла зависимостей, если есть
 
-    def test_delete_table_query(self):
-        with patch.object(self.mysql, 'execute_query') as mock_execute_query:
-            self.mysql.execute_query(delete_table_query)
-            mock_execute_query.assert_called_once_with(delete_table_query)
-
-if __name__ == '__main__':
-    unittest.main()
+    - name: Run tests
+      run: python -m unittest discover -s tests -p '*_test.py'
 
