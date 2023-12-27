@@ -1,5 +1,5 @@
 import unittest
-from src.my_script import add
+from src.main import add
 
 class TestMyScript(unittest.TestCase):
     def test_add(self):
