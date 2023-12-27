@@ -1,4 +1,4 @@
-name: Run Tests
+name: Run Tests and Coverage Check
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main  # Укажите нужную ветку
 
 jobs:
-  test:
+  test-and-coverage:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9'  
+        python-version: '3.9'  # Укажите версию Python, если необходимо
 
     - name: Install dependencies
       run: |
@@ -25,3 +25,16 @@ jobs:
 
     - name: Run tests
       run: python -m unittest discover tests
+
+    - name: Check test coverage
+      run: |
+        coverage run -m unittest discover tests
+        coverage report -m
+        coverage html
+
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage-report
+        path: htmlcov  # Путь к папке с HTML-отчетом
+
