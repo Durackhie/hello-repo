@@ -1,5 +1,5 @@
 import logging
-from mysql_class import MySQL
+from mysql_class.py import MySQL
 
 logging.basicConfig(filename='main.log', level=logging.DEBUG)
 
