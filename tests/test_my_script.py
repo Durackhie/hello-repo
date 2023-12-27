@@ -1,5 +1,6 @@
 import unittest
 from src.main import add
+from src.mysql_class import add
 
 class TestMyScript(unittest.TestCase):
     def test_add(self):
