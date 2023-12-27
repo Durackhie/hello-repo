@@ -22,4 +22,3 @@ jobs:
 
     - name: Run tests
       run: python -m unittest discover -s tests -p '*_test.py'
-
