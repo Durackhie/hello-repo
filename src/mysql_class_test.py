@@ -19,14 +19,15 @@ class TestMySQLMethods(unittest.TestCase):
 
     def test_execute_query_failure(self):
         query = "SELECT * FROM table_name"
-        self.mock_cursor.execute.side_effect = Exception("Mocked exception")
+        self.mock_cursor.execute.side_effect = Exception("Моделируемое исключение")
         
-        with self.assertRaises(Exception):
+        with self.assertRaises(Exception) as context:
             self.mysql.execute_query(query)
+
+        self.assertEqual(str(context.exception), "Моделируемое исключение")
 
     def tearDown(self):
         del self.mysql
 
 if __name__ == '__main__':
     unittest.main()
-
